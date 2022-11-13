@@ -5,7 +5,7 @@
 
 ldi R16,HIGH(RAMEND)
 out SPH,R16
-ldi R!^,LOW(RAMEND)
+ldi R16,LOW(RAMEND)
 OUT SPL,R16 
 
 CBI DDRB,3 ; CLEAR PB3 set PB3 as an input
@@ -13,7 +13,7 @@ SBI DDRC,5 ; set PB5 make it as an output
 
 Forever:
   SBIC PINB,3 ; keep monitoring PB3 for HIGH
-  RJMP HERE ; stay here
+  RJMP Forever ; stay here
   SBI PORTC,5 ; make PC5 high
   CBI PORTC,5 ; make PC% low
-  RJMP HERE
+  RJMP Forever
